@@ -1,6 +1,5 @@
 '''
-在类内实现装饰器， 要在内层函数中的一个形参是self， 被传入方法被调用时第一个形参也要时self，
-装饰器尽量写在类外。
+
 '''
 
 import pymysql
@@ -64,8 +63,5 @@ class Mysql:
 
 
 if __name__ == '__main__':
-    # mysql = Mysql('localhost', 3306, "root", "111111", "spider")
-    # sql = "insert into master values(%s, %s, %s, %s)"
-    # print(mysql.insert_multi(sql, [9, "eee", "eeee", 333.3]))
-    # mysql.close()
+    
     pass
