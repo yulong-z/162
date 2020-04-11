@@ -12,6 +12,7 @@ def decorator(fun):
             fun(self, *args, **kwargs)
             self._db.commit()
         except Exception as e:
+            self._db.rollback()
             print("error: ", e)
             return False
         return True
