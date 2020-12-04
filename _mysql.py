@@ -1,12 +1,13 @@
 '''
 
 '''
-
+from functools import wraps
 import pymysql
 
 
 # 装饰器函数
 def decorator(fun):
+    @wraps(fun)
     def func(self, *args, **kwargs):
         try:
             fun(self, *args, **kwargs)
@@ -20,7 +21,7 @@ def decorator(fun):
 
 
 class Mysql:
-    def __init__(self, host, port, user, passwd, db):
+    def __init__(self, passwd, db, host="localhost", port="3306", user="root"):
         self._create_db(host, port, user, passwd, db)
 
     def _create_db(self, host, port, user, passwd, db):
@@ -37,7 +38,7 @@ class Mysql:
         self._db.close()
 
     # 单条查询
-    def select(self, sql):
+    def query(self, sql):
         self._cursor.execute(sql)
         return self._cursor.fetchall()
 
